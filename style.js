@@ -1,13 +1,14 @@
+S
 /* ========================================
    SETTINGS
    ======================================== */
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/vostinjugush@gmail.com";
-
+ 
 // true when the visitor has asked their device to reduce motion
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
-
+ 
 /* ========================================
    NAVBAR TOGGLE
    ======================================== */
@@ -19,30 +20,30 @@ const menuIcon = menuButton
     ? menuButton
     : menuButton.querySelector("i")
   : null;
-
+ 
 function setMenu(open) {
   if (!menuButton || !navbar) return;
-
+ 
   navbar.classList.toggle("active", open); // shows/hides navbar
   menuButton.setAttribute("aria-expanded", String(open));
   menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-
+ 
   if (menuIcon) {
     menuIcon.classList.toggle("fa-bars", !open); // hamburger
     menuIcon.classList.toggle("fa-xmark", open); // X icon
   }
 }
-
+ 
 if (menuButton && navbar) {
   menuButton.addEventListener("click", () => {
     setMenu(!navbar.classList.contains("active"));
   });
-
+ 
   // close the menu when a link is clicked (mobile)
   navbar.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenu(false));
   });
-
+ 
   // close the menu with the Escape key
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && navbar.classList.contains("active")) {
@@ -51,7 +52,7 @@ if (menuButton && navbar) {
     }
   });
 }
-
+ 
 /* ========================================
    SCROLL REVEAL
    (skipped if the library failed to load or motion is reduced)
@@ -63,7 +64,7 @@ if (typeof ScrollReveal !== "undefined" && !prefersReducedMotion) {
     delay: 200,
     // reset: true
   });
-
+ 
   sr.reveal(".home-content, .heading", { origin: "top" });
   sr.reveal(".home-img, .resume-container, .contact form", {
     origin: "bottom",
@@ -72,14 +73,14 @@ if (typeof ScrollReveal !== "undefined" && !prefersReducedMotion) {
   sr.reveal(".home-content p, .about-content", { origin: "right" });
   sr.reveal(".service-card", { origin: "bottom", interval: 150 });
 }
-
+ 
 /* ========================================
    TYPED TEXT
    (only on pages with .multiple-text; otherwise it would throw an
    error and stop everything below, including the contact form)
    ======================================== */
 const typedTarget = document.querySelector(".multiple-text");
-
+ 
 if (typedTarget) {
   const roles = [
     "Digital Marketing Specialist",
@@ -87,7 +88,7 @@ if (typedTarget) {
     "Blog and Website Manager",
     "Freelancer",
   ];
-
+ 
   if (typeof Typed !== "undefined" && !prefersReducedMotion) {
     new Typed(".multiple-text", {
       strings: roles,
@@ -101,20 +102,20 @@ if (typedTarget) {
     typedTarget.textContent = roles[0];
   }
 }
-
+ 
 /* ========================================
    CONTACT FORM
    ======================================== */
 const form = document.getElementById("contact-form");
-
+ 
 // only run on pages that actually have the contact form
 if (form) {
   // use our own messages instead of the browser's pop-ups
   form.noValidate = true;
-
+ 
   const formSuccess = document.getElementById("form-success");
   const submitBtn = form.querySelector('input[type="submit"]');
-
+ 
   // each field: its name, its error element, and a check that returns
   // an error message (or "" when the value is fine)
   const fields = [
@@ -153,16 +154,16 @@ if (form) {
       check: (v) => (v ? "" : "Message is required"),
     },
   ];
-
+ 
   function showStatus(text, isError) {
     formSuccess.style.color = isError ? "#ff4d6d" : ""; // red, or theme colour
     formSuccess.style.display = "block";
     formSuccess.textContent = text;
   }
-
+ 
   form.addEventListener("submit", async function (e) {
     e.preventDefault(); // stop page reload
-
+ 
     // reset previous errors and status
     fields.forEach(({ name, error }) => {
       document.getElementById(error).textContent = "";
@@ -170,27 +171,27 @@ if (form) {
     });
     formSuccess.style.display = "none";
     formSuccess.textContent = "";
-
+ 
     // validation checks
     let firstInvalid = null;
-
+ 
     fields.forEach(({ name, error, check }) => {
       const input = form.elements[name];
       const message = check(input.value.trim());
-
+ 
       if (message) {
         document.getElementById(error).textContent = message;
         input.setAttribute("aria-invalid", "true");
         if (!firstInvalid) firstInvalid = input;
       }
     });
-
+ 
     // Stop submission if invalid, and put the cursor on the first problem
     if (firstInvalid) {
       firstInvalid.focus();
       return; // <- THIS prevents blank messages
     }
-
+ 
     // spam trap: bots fill the hidden field, people never see it.
     // Pretend it worked, but send nothing.
     const honey = form.elements["_honey"];
@@ -199,29 +200,36 @@ if (form) {
       form.reset();
       return;
     }
-
+ 
     // everything is valid: send the message by email
     const originalLabel = submitBtn.value;
     submitBtn.disabled = true; // stops double-clicks sending it twice
     submitBtn.value = "Sending...";
-
+ 
     try {
+      // send the fields as JSON, the format FormSubmit documents for AJAX
+      // (this includes the hidden FormSubmit settings from the form)
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form), // includes the hidden FormSubmit fields
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
-      const result = await response.json();
-
+      const result = await response.json().catch(() => ({}));
+ 
       if (!response.ok || String(result.success) !== "true") {
+        console.error("Contact form failed:", response.status, result);
         throw new Error(result.message || "Sending failed");
       }
-
+ 
       showStatus("Thank you! Your message has been sent.", false);
       form.reset();
     } catch (error) {
+      console.error("Contact form error:", error);
       showStatus(
-        "Sorry, your message could not be sent. Please try again in a moment.",
+        "Sorry, your message could not be sent. Please try again, or email vostinjugush@gmail.com directly.",
         true,
       );
     } finally {
