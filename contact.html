@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Stephen | Digital Marketing &amp; Content Creation</title>
+    <meta
+      name="description"
+      content="Get in touch with Stephen, a digital marketing and content creation specialist, to discuss your next project."
+    />
+
+    <!-- font awesome cdn link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Nunito Sans font (loaded here instead of inside the CSS: faster) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- custom css file link (last, so it can override the libraries) -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- header section -->
+    <header class="header">
+      <a href="index.html" class="logo">Stephen</a>
+
+      <!-- Menu button (shown on small screens only) -->
+      <button
+        type="button"
+        id="menu-icon"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <nav class="navbar" id="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- contact section -->
+      <section class="contact" id="contact">
+        <h1 class="heading">Contact <span>Me</span></h1>
+        <p class="contact-intro">
+          Have a project in mind or want to work together? Send me a message and
+          I’ll get back to you.
+        </p>
+
+        <div class="contact-layout">
+          <!-- contact details -->
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <span class="label">Email</span>
+                <a href="mailto:vostinjugush@gmail.com"
+                  >vostinjugush@gmail.com</a
+                >
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <span class="label">Phone</span>
+                <a href="tel:+254745888652">+254 745 888 652</a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <span class="label">Location</span>
+                <span class="value">Nairobi, Kenya</span>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <i class="fa-brands fa-linkedin"></i>
+              </div>
+              <div>
+                <span class="label">LinkedIn</span>
+                <a
+                  href="https://www.linkedin.com/in/stephen-chege-3273401b5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >linkedin.com/in/stephen-chege-3273401b5</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- message form -->
+          <div class="contact-form-card">
+            <!--
+              The action and method are a fallback: style.js normally sends
+              the form in the background, and these only take over if
+              JavaScript fails to load.
+            -->
+            <form
+              id="contact-form"
+              action="https://formsubmit.co/vostinjugush@gmail.com"
+              method="POST"
+            >
+              <!-- FormSubmit settings -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="New message from your portfolio website"
+              />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <!-- spam trap: real visitors never see or fill this in -->
+              <input
+                type="text"
+                name="_honey"
+                style="display: none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+
+              <div class="inputBox">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  aria-label="Full name"
+                  autocomplete="name"
+                  aria-describedby="name-error"
+                  required
+                />
+                <span class="error" id="name-error" aria-live="polite"></span>
+              </div>
+              <div class="inputBox">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  aria-label="Email address"
+                  autocomplete="email"
+                  aria-describedby="email-error"
+                  required
+                />
+                <span class="error" id="email-error" aria-live="polite"></span>
+              </div>
+              <div class="inputBox">
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  aria-label="Subject"
+                  aria-describedby="subject-error"
+                  required
+                />
+                <span
+                  class="error"
+                  id="subject-error"
+                  aria-live="polite"
+                ></span>
+              </div>
+              <div class="inputBox">
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  aria-label="Phone number"
+                  autocomplete="tel"
+                  aria-describedby="phone-error"
+                  required
+                />
+                <span class="error" id="phone-error" aria-live="polite"></span>
+              </div>
+              <div class="inputBox full">
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  aria-label="Your message"
+                  aria-describedby="message-error"
+                  required
+                ></textarea>
+                <span
+                  class="error"
+                  id="message-error"
+                  aria-live="polite"
+                ></span>
+              </div>
+
+              <input type="submit" value="Send Message" class="btn" />
+              <p
+                id="form-success"
+                aria-live="polite"
+                style="display: none; margin-top: 1rem"
+              ></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Copyright &copy; 2026 by Stephen. All rights reserved.</p>
+    </footer>
+
+    <!-- Typed.js is not needed on this page, so it is no longer loaded -->
+    <script
+      defer
+      src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"
+    ></script>
+    <script defer src="style.js"></script>
+  </body>
+</html>
