@@ -9,6 +9,23 @@
       content="About Stephen: a digital marketing specialist helping hotels build a stronger online presence through advertising, content, graphic design and blog management."
     />
 
+    <meta name="theme-color" content="#0f0f0f" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f0f0f'/%3E%3Ctext x='32' y='46' font-size='42' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%23d37924'%3ES%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- link preview when the page is shared (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="About Stephen | Digital Marketing &amp; Content Creation"
+    />
+    <meta
+      property="og:description"
+      content="About Stephen: a digital marketing specialist helping hotels build a stronger online presence through advertising, content, graphic design and blog management."
+    />
+
     <!-- font awesome cdn link -->
     <link
       rel="stylesheet"
@@ -17,7 +34,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- remix icon is used on this page (Git, WordPress and Football icons) -->
+    <!-- remixicon is used on this page (Git, WordPress and Football icons) -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -38,7 +55,9 @@
   <body>
     <!-- header section -->
     <header class="header">
-      <a href="index.html" class="logo">Stephen</a>
+      <a href="index.html" class="logo"
+        ><img src="assets/Logo.png" alt="Stephen – home" height="80"
+      /></a>
 
       <!-- Menu button (shown on small screens only) -->
       <button
@@ -64,7 +83,7 @@
       <section class="about" id="about">
         <div class="about-img">
           <img
-            src="imagesPlusCv/steve.png"
+            src="assets/steve.png"
             alt="Portrait of Stephen"
             width="400"
             height="400"
@@ -105,6 +124,18 @@
               <h3>Canva</h3>
             </div>
             <div class="skill-box">
+              <i class="fa-solid fa-image" aria-hidden="true"></i>
+              <h3>Adobe Photoshop</h3>
+            </div>
+            <div class="skill-box">
+              <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+              <h3>Adobe Illustrator</h3>
+            </div>
+            <div class="skill-box">
+              <i class="fa-solid fa-film" aria-hidden="true"></i>
+              <h3>Wondershare Filmora</h3>
+            </div>
+            <div class="skill-box">
               <i class="fa-brands fa-meta" aria-hidden="true"></i>
               <h3>Meta</h3>
             </div>
@@ -138,7 +169,9 @@
     </main>
 
     <footer class="footer">
-      <p>Copyright &copy; 2026 by Stephen. All rights reserved.</p>
+      <p>
+        Copyright &copy; 2026 by Stephen Njuguna Chege. All rights reserved.
+      </p>
     </footer>
 
     <!-- Typed.js is not needed on this page, so it is no longer loaded -->

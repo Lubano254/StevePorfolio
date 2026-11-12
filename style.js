@@ -206,22 +206,29 @@ if (form) {
     submitBtn.value = "Sending...";
 
     try {
+      // send the fields as JSON, the format FormSubmit documents for AJAX
+      // (this includes the hidden FormSubmit settings from the form)
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form), // includes the hidden FormSubmit fields
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok || String(result.success) !== "true") {
+        console.error("Contact form failed:", response.status, result);
         throw new Error(result.message || "Sending failed");
       }
 
       showStatus("Thank you! Your message has been sent.", false);
       form.reset();
     } catch (error) {
+      console.error("Contact form error:", error);
       showStatus(
-        "Sorry, your message could not be sent. Please try again in a moment.",
+        "Sorry, your message could not be sent. Please try again, or email vostinjugush@gmail.com directly.",
         true,
       );
     } finally {
