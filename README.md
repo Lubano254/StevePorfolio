@@ -13,7 +13,7 @@
 
 <br />
 
-<img src="docs/screenshots/home.png" alt="Home page of the portfolio website" width="860" />
+<img src="docs/screenshots/index.png" alt="Home page of the portfolio website" width="860" />
 
 </div>
 
@@ -24,7 +24,7 @@
 - [About the project](#about-the-project)
 - [Features](#features)
 - [Screenshots](#screenshots)
-- [Tools&Skills](#tools-&-Skills)
+- [Tools & Skills](#tools-&-Skills)
 - [Project structure](#project-structure)
 - [Quick start](#quick-start)
 - [Manual: how to update the site](#manual-how-to-update-the-site)
@@ -80,7 +80,7 @@ It is a **client project** designed and developed by [Lubano Mabisi Dennis](#aut
 
 </details>
 
-## Tech stack
+## Tools & Skills
 
 | Area         | Used                                                                                                          |
 | ------------ | ------------------------------------------------------------------------------------------------------------- |
