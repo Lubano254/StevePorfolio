@@ -303,6 +303,6 @@ Ideas for future versions:
 Designed, built and deployed this website for the client.
 
 - GitHub: [Lubano254](https://github.com/Lubano254)
-- LinkedIn: [linkedin.com/in/lubano-dennis-57a5a5392]
+- LinkedIn: [Lubano Dennis](linkedin.com/in/lubano-dennis-57a5a5392)
 
 Questions or ideas? Open an [issue](../../issues).
