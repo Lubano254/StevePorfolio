@@ -1,6 +1,20 @@
-.vscode/
-.env
-.env.*
-!.env.example
+# Operating system files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+
+# Vercel local settings
+.vercel
+
+# Dependencies and logs (not used now, but safe to keep ignored)
+node_modules/
+*.log
+
+# Local notes and secrets: never commit these
+.env
+.env.*
+*.zip
